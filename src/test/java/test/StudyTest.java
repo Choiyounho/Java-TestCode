@@ -1,6 +1,10 @@
 package test;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.condition.EnabledOnJre;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.JRE;
+import org.junit.jupiter.api.condition.OS;
 
 import java.lang.reflect.Executable;
 import java.time.Duration;
@@ -8,15 +12,21 @@ import java.util.function.Supplier;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class StudyTest {
 
     @Test
     @DisplayName("스터디 만들기")
-    void create() {
-//        Study actual = new Study(10);
-//        assertThat(actual.getLimit()).isGreaterThan(0);
+    @EnabledOnOs(OS.WINDOWS)
+    void create_new_study() {
+        String test_env = System.getenv("TEST_ENV");
+        System.out.println(test_env);
+        assumeTrue("LOCAL".equalsIgnoreCase(test_env));
+
+        Study actual = new Study(10);
+        assertThat(actual.getLimit()).isGreaterThan(0);
 
 //        assertTimeoutPreemptively(Duration.ofMillis(100), () -> {
 //            new Study(10);
@@ -40,7 +50,7 @@ class StudyTest {
 
     @Test
     @Disabled
-    void create1() {
+    void create_new_study_again() {
         System.out.println("create1");
     }
 
