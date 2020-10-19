@@ -18,15 +18,20 @@ import static org.junit.jupiter.api.Assumptions.assumeTrue;
 class StudyTest {
 
     @Test
-    @DisplayName("스터디 만들기")
+    @DisplayName("스터디 만들기 fast")
     @EnabledOnOs(OS.WINDOWS)
+//    @Tag("fast")
+    @FastTest
     void create_new_study() {
-        String test_env = System.getenv("TEST_ENV");
-        System.out.println(test_env);
-        assumeTrue("LOCAL".equalsIgnoreCase(test_env));
 
-        Study actual = new Study(10);
-        assertThat(actual.getLimit()).isGreaterThan(0);
+
+
+//        String test_env = System.getenv("TEST_ENV");
+//        System.out.println(test_env);
+//        assumeTrue("LOCAL".equalsIgnoreCase(test_env));
+//
+//        Study actual = new Study(10);
+//        assertThat(actual.getLimit()).isGreaterThan(0);
 
 //        assertTimeoutPreemptively(Duration.ofMillis(100), () -> {
 //            new Study(10);
@@ -49,7 +54,8 @@ class StudyTest {
     }
 
     @Test
-    @Disabled
+    @SlowFast
+//    @Tag("slow")
     void create_new_study_again() {
         System.out.println("create1");
     }
