@@ -25,7 +25,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class StudyTest {
 
@@ -38,7 +37,6 @@ class StudyTest {
         Study actual = new Study(100);
         System.out.println(this);
         System.out.println(value++);
-//        Study actual = new Study(1);
         assertThat(actual.getLimit()).isGreaterThan(0);
     }
 
@@ -86,23 +84,23 @@ class StudyTest {
     }
     
     @BeforeAll
-    void beforeAll() {
-        System.out.println("before all");
+    static void beforeAll() {
+        System.out.println("Before all");
     }
 
     @AfterAll
-    void afterAll() {
-        System.out.println("after all");
+    static void afterAll() {
+        System.out.println("After all");
     }
 
     @BeforeEach
     void beforeEach() {
-        System.out.println("before each");
+        System.out.println("Before each");
     }
 
     @AfterEach
     void afterEach() {
-        System.out.println("after each");
+        System.out.println("After each");
     }
 
 }
